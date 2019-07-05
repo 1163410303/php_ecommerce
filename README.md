@@ -1,4 +1,4 @@
 # php_ecommerce
-client side: basic html
-server side : php
-db: mysql
+.client side: basic html and js
+.server side : php
+.db: mysql
