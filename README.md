@@ -1,5 +1,5 @@
 # php_ecommerce
-client side: basic html and js
+client side: bootstrap
 
 server side : php
 
