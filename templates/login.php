@@ -30,14 +30,14 @@
                                 <input class="input-txt"  aria-label="用户名" aria-required="true" autocapitalize="off" autocorrect="off" maxlength="30" name="username" placeholder="username" value="" type="text" data-reactid=".0.1.0.1.0.1.0.5.0">
                             </div>
                             <div class="form-item">
-                                <input class="input-txt" aria-describedby="" aria-label="密码" aria-required="true" autocapitalize="off" autocorrect="off" name="password" placeholder="password" type="password" value="" data-reactid=".0.1.0.1.0.1.0.6.0">
+                                <input class="input-txt" aria-describedby="" aria-label="密码" aria-required="true" name="password" placeholder="password" type="password">
                             </div>
                             <div class="btn-wrapper">
-                                <button class="btn-primary" onclick="form=document.getElementById('regloginform');form.action='/reg/'">register</button>
-                                <button class="btn-primary" onclick="form=document.getElementById('regloginform');form.action='/login/'">login</button>
+                                <button class="btn-primary" onclick="form=document.getElementById('regloginform');form.action='shop.'">Register</button>
+                                <button class="btn-primary" onclick="form=document.getElementById('regloginform');form.action='shop.php'">Login</button>
                             </div>
                             <p class="agreenment">
-                                <span>Welcome to register.          </span><br>
+                                <span>Welcome to register.</span><br>
                                 <a class="agreenment-link"  target="_blank">If you already have an account, login directly.</a>
                             </p>
                         </form>
