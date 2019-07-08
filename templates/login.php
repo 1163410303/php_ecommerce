@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -24,8 +23,13 @@
                             <h2 class="login-hd">
                                 Online MQ-HIT Bookshop
                             </h2>
-                             <h2 class="login-hd">
-                                <!-- 提醒消息显示 -->
+                             <h2 class="alert">
+                                <?php
+                                $msg = $_GET['msg'];
+                                if (msg) {
+                                    echo "$msg";
+                                }
+                                ?>
                             </h2>
                             <div class="form-item">
                                 <input class="input-txt"  aria-label="用户名" aria-required="true" autocapitalize="off" autocorrect="off" maxlength="30" name="username" placeholder="username" value="" type="text" data-reactid=".0.1.0.1.0.1.0.5.0">
@@ -34,8 +38,8 @@
                                 <input class="input-txt" aria-describedby="" aria-label="密码" aria-required="true" name="password" placeholder="password" type="password">
                             </div>
                             <div class="btn-wrapper">
-                                <button class="btn-primary" onclick="form=document.getElementById('regloginform');form.action='register.php'">Register</button>
-                                <button class="btn-primary" onclick="form=document.getElementById('regloginform');form.action='shop.php'">Login</button>
+                                <button class="btn-primary" onclick="form=document.getElementById('regloginform');form.action='func.php?action=register'">Register</button>
+                                <button class="btn-primary" onclick="form=document.getElementById('regloginform');form.action='func.php?action=login'">Login</button>
                             </div>
                             <p class="agreenment">
                                 <span>Welcome to register.</span><br>

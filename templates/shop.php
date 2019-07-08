@@ -33,7 +33,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="logout.php">Logout</a>
+                <a class="dropdown-item" href="func.php?action=logout">Logout</a>
                 <a class="dropdown-item" href="contact.php">Setting</a>
               </div>
             </li>
@@ -85,7 +85,7 @@
             <div class="card-body">
               <h5 class="card-title">Book Title</h5>
               <p class="card-text">description</p>
-              <a href="detail.php" class="btn btn-primary">Detail</a>
+              <a href="detail.php?gid=1" class="btn btn-primary">Detail</a>
             </div>
           </div>
         </div>
@@ -95,7 +95,7 @@
             <div class="card-body">
               <h5 class="card-title">Book Title</h5>
               <p class="card-text">description</p>
-              <a href="detail.php" class="btn btn-primary">Detail</a>
+              <a href="detail.php?gid=2" class="btn btn-primary">Detail</a>
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@
             <div class="card-body">
               <h5 class="card-title">Book Title</h5>
               <p class="card-text">description</p>
-              <a href="detail.php" class="btn btn-primary">Detail</a>
+              <a href="detail.php?gid=3" class="btn btn-primary">Detail</a>
             </div>
           </div>
         </div>
@@ -117,7 +117,7 @@
             <div class="card-body">
               <h5 class="card-title">Book Title</h5>
               <p class="card-text">description</p>
-              <a href="detail.php" class="btn btn-primary">Detail</a>
+              <a href="detail.php?gid=4" class="btn btn-primary">Detail</a>
             </div>
           </div>
         </div>
@@ -127,7 +127,7 @@
             <div class="card-body">
               <h5 class="card-title">Book Title</h5>
               <p class="card-text">description</p>
-              <a href="detail.php" class="btn btn-primary">Detail</a>
+              <a href="detail.php?gid=5" class="btn btn-primary">Detail</a>
             </div>
           </div>
         </div>
@@ -137,7 +137,7 @@
             <div class="card-body">
               <h5 class="card-title">Book Title</h5>
               <p class="card-text"> description</p>
-              <a href="detail.php" class="btn btn-primary">Detail</a>
+              <a href="detail.php?gid=6" class="btn btn-primary">Detail</a>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php session_start();?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -9,6 +9,11 @@
     <link href="../static/styles/pages/bootstrap-4.0.0.css" rel="stylesheet">
   </head>
   <body>
+    <?php 
+      if(!isset($_SESSION['userstatus'])){
+         echo "<script> window.location.href='login.php'</script>";
+      }
+     ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="/">BookShop</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +57,7 @@
     <div class="container">
       <div class="row">
         <div class="text-center col-md-6 col-12 col-xl-12">
-          <h3><b>Order</b></h3>
+          <h3><b>Product id= <?php echo $_GET['gid']; ?></b></h3>
 		  <p>We will contact you at the first time and deliver the goods after the audit.</p>
 		  <p><em><strong>Please check your personal information carefully before confirming the order. We are not responsible for the failure of the order due to your personal reasons.</strong></em></p>
 		<form role="form" id="detail" method="post">

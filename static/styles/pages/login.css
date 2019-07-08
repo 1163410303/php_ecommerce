@@ -44,8 +44,8 @@
     margin:0 40px 10px;
     text-align:center
 }
-.login-hd {
-    color:#a5a7aa;
+.alert {
+    color:#FF0000 ;
     font-size:17px;
     font-weight:600;
     line-height:20px;

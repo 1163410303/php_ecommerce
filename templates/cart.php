@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php session_start();?>
 <html>
   <head>
     <meta charset="utf-8">
@@ -9,6 +9,11 @@
     <link href="../static/styles/pages/bootstrap-4.0.0.css" rel="stylesheet">
   </head>
   <body>
+    <?php 
+      if(!isset($_SESSION['userstatus'])){
+         echo "<script> window.location.href='login.php'</script>";
+      }
+     ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
    <div class="container">
         <a class="navbar-brand" href="/shop">BookShop</a>
