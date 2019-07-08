@@ -10,6 +10,7 @@
 </head>
 
     <body>
+
         <main class="main login-main" role="main">
             <article class="login-cont clearfix">
 
@@ -33,7 +34,7 @@
                                 <input class="input-txt" aria-describedby="" aria-label="密码" aria-required="true" name="password" placeholder="password" type="password">
                             </div>
                             <div class="btn-wrapper">
-                                <button class="btn-primary" onclick="form=document.getElementById('regloginform');form.action='shop.'">Register</button>
+                                <button class="btn-primary" onclick="form=document.getElementById('regloginform');form.action='register.php'">Register</button>
                                 <button class="btn-primary" onclick="form=document.getElementById('regloginform');form.action='shop.php'">Login</button>
                             </div>
                             <p class="agreenment">
@@ -46,6 +47,8 @@
 
             </article>
         </main>
+
+
     </body>   
 
 </html>

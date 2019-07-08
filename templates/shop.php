@@ -1,14 +1,18 @@
-<!DOCTYPE html>
+<?php session_start();?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>hit-1163410303</title>
-    <!-- Bootstrap -->
     <link href="../static/styles/pages/bootstrap-4.0.0.css" rel="stylesheet">
   </head>
   <body>
+    <?php 
+      if(!isset($_SESSION['userstatus'])){
+         echo "<script> window.location.href='login.php'</script>";
+      }
+     ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand" href="/shop">BookShop</a>
@@ -29,7 +33,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="login.php">Logout</a>
+                <a class="dropdown-item" href="logout.php">Logout</a>
                 <a class="dropdown-item" href="contact.php">Setting</a>
               </div>
             </li>
