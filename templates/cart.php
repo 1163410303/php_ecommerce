@@ -14,7 +14,7 @@
          echo "<script> window.location.href='login.php'</script>";
       }
      ?>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
    <div class="container">
         <a class="navbar-brand" href="/shop">BookShop</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,58 +34,75 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="login.php">Logout</a>
+                <a class="dropdown-item" href="func.php?action=logout">Logout</a>
                 <a class="dropdown-item" href="contact.php">Setting</a>
               </div>
             </li>
           </ul>
-          <!-- <form class="form-inline my-2 my-lg-0"> -->
-            <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="输入商品名或种类名">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button> -->
-          <!-- </form> -->
         </div>
       </div>
-    </nav>
+   </nav>
+
     <div class="container">
       <div class="row text-center">
         <!-- {% for i in range(cartLength) %} -->
-        <div class="col-md-4 pb-1 pb-md-0">
-          <div class="card">
-            <img class="card-img-top" src="../static/images/booktest.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title"><!-- {{ goods[i].name }}{{ quantitys[i]}} -->JIUYIN Book * 999</h5>
-              <p class="card-text"><!-- {{ goods[i].content }} -->test</p>
+    <?php 
+		include("dbconnect.php"); 
+		$uid = $_SESSION['userid'];
+		$sql = "select * from cart where user_id='$uid' ";
+		$result = $conn->query($sql);
+		$quantitys = array();
+		$names = array();
+		$images = array();
+    $cids = array();
+
+		//read the password from database
+		if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			
+			$quantitys[] = $row['quantity'];
+			$gid = $row['good_id'];
+      $cids[] = $row['id'];
+			//read the names and urls
+			$sql = "select * from good where id='$gid' ";
+			$result_temp = $conn->query($sql);
+				if ($result_temp->num_rows > 0) {
+					while($row = $result_temp->fetch_assoc()) {
+						$names[] = $row['name'];
+						$images[] = $row['good_url'];
+					}
+				}
+			}
+		}else{
+      echo "no items ";
+    }
+
+
+    $images[0] = "../static/images/booktest.jpg";
+		$conn->close();
+		$arrlength = count($quantitys);
+for ($i=0; $i <$arrlength ; $i++) {  
+echo <<<ENF
+<div class="col-md-4 pb-1 pb-md-0">
+  <div class="card">
+    <img class="card-img-top" src={$images[$i]} alt="Card image cap">
+        <div class="card-body">
+              <h5 class="card-title">$names[$i] * $quantitys[$i]</h5>
+              <p class="card-text">test</p>
               <a href="/confirm_myorder/{{ cartids[i] }}" class="btn btn-primary">Confirm</a>
-              <a href="/delete_cart/{{ cartids[i] }}" class="btn btn-danger">Delete</a>
-            </div>
-          </div>
+              <a href="func.php?action=delete_cart&cid=$cids[$i]" class="btn btn-danger">Delete</a>
         </div>
-         <div class="col-md-4 pb-1 pb-md-0">
-          <div class="card">
-            <img class="card-img-top" src="../static/images/booktest.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title"><!-- {{ goods[i].name }}{{ quantitys[i]}} -->JIUYIN Book * 999</h5>
-              <p class="card-text"><!-- {{ goods[i].content }} -->test</p>
-              <a href="/confirm_myorder/{{ cartids[i] }}" class="btn btn-primary">Confirm</a>
-              <a href="/delete_cart/{{ cartids[i] }}" class="btn btn-danger">Delete</a>
-            </div>
-          </div>
-        </div>
-         <div class="col-md-4 pb-1 pb-md-0">
-          <div class="card">
-            <img class="card-img-top" src="../static/images/booktest.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title"><!-- {{ goods[i].name }}{{ quantitys[i]}} -->JIUYIN Book * 999</h5>
-              <p class="card-text"><!-- {{ goods[i].content }} -->test</p>
-              <a href="/confirm_myorder/{{ cartids[i] }}" class="btn btn-primary">Confirm</a>
-              <a href="/delete_cart/{{ cartids[i] }}" class="btn btn-danger">Delete</a>
-            </div>
-          </div>
-        </div>
-        <!-- {% endfor %} -->
+  </div>
+</div>
+ENF;
+		}
+    ?>
+
+
+       
+
 
       </div>
-
     </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="../static/js/jquery-3.2.1.min.js"></script>

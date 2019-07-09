@@ -33,7 +33,7 @@
          <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="contact.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="login.php">LogOut</a>
+                <a class="dropdown-item" href="func.php?action=logout">LogOut</a>
                 <a class="dropdown-item" href="contact.php">Setting</a>
               </div>
             </li>
@@ -57,7 +57,7 @@
     <div class="container">
       <div class="row">
         <div class="text-center col-md-6 col-12 col-xl-12">
-          <h3><b>Product id= <?php echo $_GET['gid']; ?></b></h3>
+          <h3><b>Product id= <?php $gid=$_GET['gid']; $_SESSION['gid'] = "$gid"; echo $gid ;  ?></b></h3>
 		  <p>We will contact you at the first time and deliver the goods after the audit.</p>
 		  <p><em><strong>Please check your personal information carefully before confirming the order. We are not responsible for the failure of the order due to your personal reasons.</strong></em></p>
 		<form role="form" id="detail" method="post">
@@ -65,8 +65,8 @@
     <label class="sr-only" for="number">Name</label>
     <input type="number" class="form-control" id="number" placeholder="Enter number" name="quantity">
   </div>
-  <button type="submit" class="btn btn-danger" onclick="form=document.getElementById('detail');form.action='/add_myorder/{{ gid }}'">Confirm Order</button>
-<button type="submit" class="btn btn-dark" onclick="form=document.getElementById('detail');form.action='/add_cart/{{ gid }}'">Add to cart</button>
+  <button type="submit" class="btn btn-danger" onclick="form=document.getElementById('detail');form.action='func.php?action=add_order'">Confirm Order</button>
+<button type="submit" class="btn btn-dark" onclick="form=document.getElementById('detail');form.action='func.php?action=add_cart'">Add to cart</button>
 </form>
         </div>
       </div>

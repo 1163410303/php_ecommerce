@@ -81,7 +81,16 @@
       <div class="row text-center">
         <div class="col-md-4 pb-1 pb-md-0">
           <div class="card">
-            <img class="card-img-top" src="../static/images/booktest.jpg" alt="Card image cap">
+            <img class="card-img-top" src="<?php
+              include("dbconnect.php"); 
+              $sql = "select good_url from good where id=4";
+              $result = $conn->query($sql);
+              $url = '';
+              while($row = $result->fetch_assoc()) {
+               $url = $row['good_url'];
+               }
+               echo($url);
+              ?>" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">Book Title</h5>
               <p class="card-text">description</p>

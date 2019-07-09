@@ -37,8 +37,34 @@
                             <div class="form-item">
                                 <input class="input-txt" aria-describedby="" aria-label="密码" aria-required="true" name="password" placeholder="password" type="password">
                             </div>
+<?php
+$type = $_GET['type'];
+if ($type) {
+    echo <<<ENF
+<div class="form-item">
+<input class="input-txt" aria-describedby="" aria-label="邮箱" aria-required="true" name="email" placeholder="email address" type="text">
+</div>
+<div class="form-item">
+<input class="input-txt" aria-describedby="" aria-label="postcode" aria-required="true" name="postcode" placeholder="postcode" type="text">
+</div>
+<div class="form-item">
+<input class="input-txt" aria-describedby="" aria-label="credit card" aria-required="true" name="credit_number" placeholder="credit_card_number" type="text">
+</div>
+<div class="form-item">
+<input class="input-txt" aria-describedby="" aria-label="credit expiry" aria-required="true" name="credit_expiry" placeholder="Format:2016-06-07-2020-06-07" type="text">
+</div>
+ENF;
+}
+
+?>
                             <div class="btn-wrapper">
-                                <button class="btn-primary" onclick="form=document.getElementById('regloginform');form.action='func.php?action=register'">Register</button>
+                                <button class="btn-primary" onclick="form=document.getElementById('regloginform');
+                                 <?php if ($_GET['type']=='register'){echo "form.action='func.php?action=register'";}
+                                else{
+                                    echo "form.action='login.php?type=register'";
+                                }
+                                ?>">
+                            Register</button>
                                 <button class="btn-primary" onclick="form=document.getElementById('regloginform');form.action='func.php?action=login'">Login</button>
                             </div>
                             <p class="agreenment">

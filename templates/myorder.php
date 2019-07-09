@@ -31,7 +31,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="login.php">Logout</a>
+                <a class="dropdown-item" href="func.php?action=logout">Logout</a>
                 <a class="dropdown-item" href="contact.php">Setting</a>
               </div>
             </li>
