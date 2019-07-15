@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Product Page Template</title>
+    <title>COMP344 Assignment 1 2019  team 6</title>
     <!-- Bootstrap -->
     <link href="../static/styles/pages/bootstrap-4.0.0.css" rel="stylesheet">
   </head>
@@ -15,7 +15,7 @@
       }
      ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="/">BookShop</a>
+      <a class="navbar-brand" href="/">BookShop-Team6</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>

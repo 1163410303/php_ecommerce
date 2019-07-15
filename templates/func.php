@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 $action = $_GET['action'];
 
 switch ($action) {
@@ -63,11 +64,26 @@ function login(){
 function register(){
 	session_start();
 	include("dbconnect.php"); 
-	$email=$_POST["email"];
 	$username=$_POST["username"];
 	$password=$_POST["password"];
+	$email=$_POST["email"];
+	$postcode=$_POST["postcode"];
+	$credit_number=$_POST["credit_number"];
+	$credit_expiry=$_POST["credit_expiry"];
 	$uid ='';
-	$sql = "INSERT INTO user (username, password) VALUES ('$username', '$password')"; 
+	if (!va_email($email)) {
+		echo "<script> window.location.href='login.php?msg=Wrong email!'</script>";
+		exit();
+	}
+	if (!va_credit($credit_number, $credit_expiry)) {
+		echo "<script> window.location.href='login.php?msg=Wrong creditcard!'</script>";
+		exit();
+	}
+	if (!va_post($postcode)) {
+		echo "<script> window.location.href='login.php?msg=Wrong postcode!'</script>";
+		exit();
+	}
+	$sql = "INSERT INTO user (username, password, email, credit_number, credit_expiry) VALUES ('$username', '$password','$email', '$credit_number', '$credit_expiry')"; 
 
 	if (mysqli_query($conn, $sql) === TRUE) {
 		$sql = "select * from user where username='$username' ";
@@ -81,6 +97,7 @@ function register(){
 		$_SESSION['userid'] = "$uid";
 		$conn->close();
 	    echo "<script> window.location.href='shop.php'</script>";
+	    email_sender($email);
 	} else {
 		$conn->close();
 	    echo "<script> window.location.href='login.php?msg=User already exists!'</script>";
@@ -124,34 +141,68 @@ function delete_cart(){
 	$conn->close();
 }
 
-function va_credit($number,$expiry)
-{
-    $result = true;
+
+
+function va_credit($number,$expiry){ 
+	$cardnumber = preg_replace ("/\D|\s/","", $number);
+        $cardlength = strlen($cardnumber);
+	if($cardlength != 0){
+		//luhn algorithm
+        	$parity = $cardlength % 2;
+            	$sum = 0;
+            	for($i=0; $i<$cardlength; $i++){
+                	$digit = $cardnumber[$i];
+                	if($i%2 == $parity) $digit = $digit * 2;
+                	if($digit > 9) $digit = $digit - 9;
+               		$sum = $sum + $digit;
+            	}
+            	$valid1 = ($sum %10==0);
+		if (preg_match ("/^([0-9]{4})([0-9]{2})([0-9]{2})$/", $expiry, $parts))
+		{
+ 
+		//Checks whether it is a date, and checkdate is month, day and year        
+			if(checkdate($parts[2],$parts[3],$parts[1]))
+            
+				$valid2 = true;
+        
+			else
+            
+				$valid2 = false;
+    
+		}
+
+		else
+		$valid2 = false;
+		$result = $valid1 && $valid2;
+    	return $result;
+        }
+	$result = false;	
     return $result;
 }
 
+
 function va_email($email)
 {
-    $result = true;
-    return $result;
+
+  if (!preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$email)) {
+  	return false;
+	}
+   return true;
 }
 
 
 function va_post($post_code)
 {
-    $result = true;
-    return $result;
+	return (preg_match("/^\d{6}$/",$post_code))?true:false;
 }
 
-function email_sender(){
-	$from_value = "1163410303";
-	$to_value = "player949@hit.edu.cn";
+function email_sender($toValue){
+	$from_value = "1163410303@hit.edu.cn";
+	$to_value = $toValue;
 	$subject_value = "registration confirmation ";
-	$text_value = "You are the member now!";
-	$headers = "From: " . "hit-1163410303";
+	$text_value = "COMP344 Assignment 1 2019  ------You are the member now!-----";
+	$headers = "From: " . "COMP344 Assignment 1 2019  team 6";
 	mail($to_value, $subject_value, $text_value, $headers);
-	echo "<p>The email has been sent to</p>";
-	echo "<p>$to_value</p>";
 }
 
 ?>

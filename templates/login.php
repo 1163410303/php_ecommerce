@@ -4,7 +4,7 @@
     <meta name="description" content="">
     <meta name="Keywords" content="">
     <link rel="icon" href="data:image/ico;base64,aWNv">
-    <title>登录注册页</title>
+    <title>COMP344 Assignment 1 2019  team 6</title>
     <link rel="stylesheet" href="../static/styles/pages/login.css">
 </head>
 
@@ -22,6 +22,7 @@
                         <form  method="post" id="regloginform">
                             <h2 class="login-hd">
                                 Online MQ-HIT Bookshop
+                                  Team6
                             </h2>
                              <h2 class="alert">
                                 <?php
@@ -51,7 +52,7 @@ if ($type) {
 <input class="input-txt" aria-describedby="" aria-label="credit card" aria-required="true" name="credit_number" placeholder="credit_card_number" type="text">
 </div>
 <div class="form-item">
-<input class="input-txt" aria-describedby="" aria-label="credit expiry" aria-required="true" name="credit_expiry" placeholder="Format:2016-06-07-2020-06-07" type="text">
+<input class="input-txt" aria-describedby="" aria-label="credit expiry" aria-required="true" name="credit_expiry" placeholder="Format:20200607" type="text">
 </div>
 ENF;
 }
